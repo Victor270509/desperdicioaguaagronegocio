@@ -14,13 +14,11 @@
             padding: 0;
             line-height: 1.6;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         /* Cabeçalho */
         header {
             background: linear-gradient(135deg, #1e88e5 0%, #2e7d32 100%);
@@ -31,7 +29,6 @@
             position: relative;
             overflow: hidden;
         }
-        
         header::before {
             content: "";
             position: absolute;
@@ -43,68 +40,89 @@
             opacity: 0.2;
             z-index: 0;
         }
-        
         header .container {
             position: relative;
             z-index: 1;
         }
-        
         header h1 {
             margin: 0;
             font-size: 2.5rem;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
         }
-        
         header p {
             font-size: 1.2rem;
             margin-top: 10px;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
-        
-        /* Navegação por Abas */
+
+        /* Navegação por Abas - NOVO DESIGN */
         .tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 30px;
-            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            gap: 15px;
         }
-        
         .tab-button {
-            padding: 12px 25px;
-            background-color: #f5f5f5;
+            position: relative;
+            min-width: 250px;
+            height: 150px;
             border: none;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            transition: all 0.3s;
-            margin: 0 5px;
-            border-radius: 5px 5px 0 0;
-        }
-        
-        .tab-button:hover {
-            background-color: #e0e0e0;
-        }
-        
-        .tab-button.active {
-            background-color: #1e88e5;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            background-color: #1e88e5; 
             color: white;
+            font-weight: bold;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            padding: 0;
         }
-        
+        .tab-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        .tab-button.active {
+            border: 3px solid #fff;
+            box-shadow: 0 0 0 3px #1e88e5, 0 6px 12px rgba(0,0,0,0.3);
+        }
+
+        .tab-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .tab-text {
+            position: relative;
+            z-index: 2;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
         /* Conteúdo das Abas */
         .tab-content {
             display: none;
             padding: 20px;
             animation: fadeIn 0.5s;
         }
-        
         .tab-content.active {
             display: block;
         }
-        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        
+
         /* Seções */
         section {
             margin-bottom: 40px;
@@ -113,18 +131,16 @@
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
         h2 {
             color: #1e88e5;
             border-bottom: 2px solid #1e88e5;
             padding-bottom: 10px;
             margin-top: 0;
         }
-        
         h3 {
             color: #0d47a1;
         }
-        
+
         /* Imagens */
         .content-image {
             max-width: 100%;
@@ -134,29 +150,26 @@
             border-radius: 8px;
             box-shadow: 0 3px 6px rgba(0,0,0,0.16);
         }
-        
+
         /* Tabelas */
         table {
             width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
         }
-        
         th, td {
             padding: 12px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
-        
         th {
             background-color: #1e88e5;
             color: white;
         }
-        
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        
+
         /* Rodapé */
         footer {
             background-color: #1e88e5;
@@ -165,23 +178,23 @@
             padding: 20px;
             margin-top: 40px;
         }
-        
+
         /* Responsividade */
         @media (max-width: 768px) {
             .tabs {
                 flex-direction: column;
+                align-items: center;
             }
-            
             .tab-button {
-                margin: 5px 0;
-                border-radius: 5px;
+                width: 100%;
+                max-width: 300px;
+                margin-bottom: 15px;
             }
-            
             header h1 {
                 font-size: 2rem;
             }
         }
-        
+
         /* Destaques */
         .highlight {
             background-color: #e3f2fd;
@@ -190,7 +203,6 @@
             margin: 20px 0;
             border-radius: 0 4px 4px 0;
         }
-        
         .fact-box {
             background-color: #e8f5e9;
             border: 1px solid #81c784;
@@ -207,68 +219,64 @@
             <p>Conscientização e soluções para um uso mais eficiente dos recursos hídricos</p>
         </div>
     </header>
-    
     <div class="container">
         <!-- Navegação por Abas -->
         <div class="tabs">
-            <button class="tab-button active" onclick="openTab(event, 'consumo')">Gasto, Consumo e Dados</button>
-            <button class="tab-button" onclick="openTab(event, 'solucoes')">Soluções</button>
-            <button class="tab-button" onclick="openTab(event, 'regional')">Região de Itajaí/SC</button>
+            <button id="consumo-btn" class="tab-button active" onclick="openTab(event, 'consumo')">
+                <span class="tab-text">Gasto, Consumo e Dados</span>
+                <img src="https://www.teraambiental.com.br/hs-fs/hubfs/0.jpg?width=600&name=0.jpg" alt="Imagem consumo" class="tab-img">
+            </button>
+            <button id="solucoes-btn" class="tab-button" onclick="openTab(event, 'solucoes')">
+                <span class="tab-text">Soluções</span>
+                <img src="https://static.preparaenem.com/conteudo_legenda/d55e7f163fcfb42b243001fefc346d15.jpg" alt="Imagem soluções" class="tab-img">
+            </button>
+            <button id="regional-btn" class="tab-button" onclick="openTab(event, 'regional')">
+                <span class="tab-text">Região de Itajaí/SC</span>
+                <img src="https://www.agricultura.sc.gov.br/wp-content/uploads/2022/03/producao_de_trigo_20210621_1432201382-1.jpg" alt="Imagem regional" class="tab-img">
+            </button>
         </div>
-        
+
         <!-- Aba 1: Gasto, Consumo e Dados -->
         <div id="consumo" class="tab-content active">
             <section>
                 <h2>Panorama do Consumo de Água no Agronegócio Brasileiro</h2>
                 <p>O agronegócio responde por 70% do consumo total de água no Brasil, sendo a agricultura responsável por 50,5% e a pecuária por 19,5%.</p>
-                
                 <div class="fact-box">
                     <h4>DADO ALARMANTE:</h4>
                     <p>Enquanto o Brasil detém 12% da água doce superficial do planeta, a má gestão hídrica no agronegócio coloca em risco a segurança alimentar e econômica do país.</p>
                 </div>
-                
                 <img src="https://www.redeagro.agr.br/2020/wp-content/uploads/2020/08/infografico.png" alt="Infográfico sobre consumo de água" class="content-image">
-                
                 <h3>Intensidade hídrica</h3>
                 <p>Em 2020, a agricultura consumiu 683,8 litros de água para gerar R$1 de Valor Adicionado Bruto (VAB). Quando descontada a água da chuva, o volume cai para 78,4 litros/R$1.</p>
-                
                 <div class="highlight">
                     <p><strong>Comparativo internacional:</strong> A pegada hídrica da soja brasileira é 55% maior que a dos EUA devido a métodos de irrigação menos eficientes.</p>
                 </div>
-                
                 <h3>Projeção</h3>
                 <p>A demanda de água no setor deve aumentar 24% na próxima década devido à expansão das áreas irrigadas.</p>
             </section>
-            
             <section>
                 <h2>Principais Fontes de Desperdício</h2>
-                
                 <h3>Sistemas de Irrigação Ineficientes</h3>
                 <p>Perdas médias: Entre 50% e 60% da água usada na irrigação é desperdiçada por falhas técnicas, como vazamentos, horários inadequados de aplicação e equipamentos obsoletos.</p>
-                
                 <h4>Causas:</h4>
                 <ul>
                     <li>Falta de planejamento técnico (solo, clima, demanda da planta)</li>
                     <li>Uso de métodos ultrapassados, como inundação, que desperdiça água por evaporação e percolação</li>
                     <li>Apenas 7,4% das áreas irrigáveis do Brasil utilizam irrigação, muitas com baixa eficiência</li>
                 </ul>
-                
                 <h3>Pecuária e Desmatamento</h3>
                 <p>Desmatamento para pastagens: 74% do desmatamento na Amazônia está associado à expansão pecuária, liberando carbono e reduzindo a capacidade de regeneração hídrica.</p>
-                
                 <h4>Impacto no ciclo da água:</h4>
                 <ul>
                     <li>Redução de chuvas: A Amazônia gera vapor d'água que regula o clima no Centro-Sul do Brasil. O desmatamento altera esse processo, agravando secas.</li>
                     <li>Contaminação: Agrotóxicos e resíduos animais poluem rios e aquíferos, inviabilizando fontes de água potável.</li>
                     <li>Consumo direto: A criação de gado consome 1.000 m³ de água por segundo, principalmente para dessedentação e limpeza de instalações.</li>
                 </ul>
-                
                 <div class="fact-box">
                     <h4>NOVO ESTUDO (2024):</h4>
                     <p>A pecuária na região do Matopiba (fronteira agrícola) já reduziu em 18% a recarga dos aquíferos Urucuia e Guarani, que abastecem 6 estados.</p>
                 </div>
             </section>
-            
             <section>
                 <h2>Dados Atualizados sobre Gastos de Água</h2>
                 <table>
@@ -301,12 +309,10 @@
                         <td>112 trilhões de litros (via commodities)</td>
                     </tr>
                 </table>
-                
                 <div class="highlight">
                     <p><strong>Água Virtual:</strong> O Brasil exportou em 2023 o equivalente a 5 anos de consumo doméstico de água através de commodities agrícolas, sem contabilizar o custo hídrico real.</p>
                 </div>
             </section>
-            
             <section>
                 <h2>Impacto Econômico do Desperdício</h2>
                 <p>Segundo estudo da Confederação da Agricultura e Pecuária do Brasil (CNA, 2023):</p>
@@ -317,27 +323,22 @@
                 </ul>
             </section>
         </div>
-        
+
         <!-- Aba 2: Soluções -->
         <div id="solucoes" class="tab-content">
             <section>
                 <h2>Soluções para Redução do Desperdício</h2>
-                
                 <h3>Tecnologias Agrícolas</h3>
                 <h4>Irrigação de precisão:</h4>
                 <p>Sistemas de gotejamento ou microaspersão reduzem perdas por evaporação em até 60%.</p>
                 <p>Uso de sensores de umidade do solo e previsão climática (ex.: plataforma BoosterPRO) pode economizar 40% em energia e aumentar produtividade em 20%.</p>
-                
                 <div class="fact-box">
                     <h4>CASO REAL:</h4>
                     <p>Fazenda em Goiás reduziu consumo hídrico em 55% com IoT, economizando R$ 1,2 milhão/ano e aumentando produção em 18%.</p>
                 </div>
-                
                 <h4>Reúso de água:</h4>
                 <p>Aproveitamento de efluentes tratados (ex.: vinhaça da cana) já irriga 25% das áreas de canaviais.</p>
-                
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAj2gTrId-Juy7EuBV_7fgNcBXWXD8fAEru1Qd9m4ua3GSekQdo5DZ5CqmB2BDHzNkAPc4wJHosoUiCKbS3aLv0Jkpy9nPRNw66Tq9h8xgX_JHxToNy-SCvx8YHBUG08s7bAd4wMRayr0/s1600/IMG-20180220-WA0014.jpg" alt="Sistema de irrigação" class="content-image">
-                
                 <h4>Agricultura 4.0:</h4>
                 <ul>
                     <li>Drones com sensores térmicos identificam vazamentos invisíveis</li>
@@ -345,36 +346,28 @@
                     <li>Blockchain para rastrear pegada hídrica de produtos</li>
                 </ul>
             </section>
-            
             <section>
                 <h3>Gestão Sustentável na Pecuária</h3>
                 <h4>Integração Lavoura-Pecuária-Floresta (ILPF):</h4>
                 <p>Sistemas integrados sequestram 2,58 ton de carbono/hectare/ano, melhorando a retenção hídrica do solo.</p>
                 <p>Apenas 15 milhões de hectares usam esse modelo (9% das pastagens).</p>
-                
                 <div class="highlight">
                     <p><strong>Benefícios comprovados:</strong> Propriedades com ILPF no MT aumentaram retenção hídrica em 30% e reduziram necessidade de irrigação em 45%.</p>
                 </div>
-                
                 <h4>Rastreabilidade bovina:</h4>
                 <p>Combate à "lavagem de gado" criado em áreas desmatadas ilegalmente.</p>
-                
                 <h4>Sistemas Voisin:</h4>
                 <p>Pastoreio racional que aumenta capacidade de suporte em 300% e reduz consumo hídrico por kg de carne.</p>
             </section>
-            
             <section>
                 <h3>Políticas Públicas</h3>
                 <h4>Investimento em infraestrutura:</h4>
                 <p>Redução de perdas na distribuição para 25% (meta da Portaria 490/2021), economizando R$20,4 bilhões até 2034.</p>
-                
                 <h4>Fiscalização:</h4>
                 <p>Controle rigoroso de agrotóxicos e desmatamento em áreas protegidas.</p>
-                
                 <h4>Incentivos fiscais:</h4>
                 <p>Novo programa Água+Produtiva (2024) oferece 30% de desconto em equipamentos de irrigação eficiente.</p>
             </section>
-            
             <section>
                 <h2>Conclusão: Desafios e Oportunidades</h2>
                 <p>O agronegócio brasileiro enfrenta uma dicotomia: é vital para a economia, mas insustentável no modelo atual. Priorizar a eficiência hídrica traria ganhos como:</p>
@@ -383,31 +376,26 @@
                     <li>Resiliência climática: Proteção de aquíferos e florestas como o Sistema Aquífero Amazônia (124 quatrilhões de litros).</li>
                     <li>Vantagem competitiva: Certificações hídricas podem agregar 15-20% no valor de exportação.</li>
                 </ul>
-                
                 <div class="fact-box">
                     <h4>VISÃO 2030:</h4>
                     <p>Se todas as soluções fossem implementadas, o Brasil poderia economizar 42 trilhões de litros/ano - suficiente para abastecer 300 milhões de pessoas.</p>
                 </div>
-                
                 <p>A transição depende de tecnologia acessível, regulação efetiva e consciência setorial sobre a crise hídrica.</p>
             </section>
         </div>
-        
+
         <!-- Aba 3: Região de Itajaí/SC -->
         <div id="regional" class="tab-content">
             <section>
                 <h2>Contexto Hídrico Regional</h2>
                 <p>O Vale do Itajaí enfrenta secas recorrentes devido ao fenômeno La Niña, com prejuízos de R$17 bilhões na agropecuária catarinense entre 2000-2022 (97,7% das perdas por seca no estado).</p>
                 <p>A região Oeste de SC (incluindo o Vale) concentra a maior demanda hídrica do estado para agropecuária, pressionando bacias hidrográficas locais.</p>
-                
                 <div class="highlight">
                     <p><strong>Dado local:</strong> O rio Itajaí-Açu já apresenta redução de 22% na vazão média nos últimos 20 anos, com picos de 40% em períodos de estiagem.</p>
                 </div>
             </section>
-            
             <section>
                 <h2>Iniciativas Locais para Redução de Desperdício</h2>
-                
                 <h3>Tecnologia de Irrigação Precisão (Itajaí)</h3>
                 <p>A empresa Metos Brasil, sediada em Itajaí, desenvolve sistemas de monitoramento inteligente que combinam:</p>
                 <ul>
@@ -415,21 +403,17 @@
                     <li>Plataforma Irrimet para cálculo do balanço hídrico em tempo real.</li>
                 </ul>
                 <p>Redução de 30-50% no consumo de água ao evitar irrigação excessiva e sincronizar com previsões de chuva.</p>
-                
                 <div class="fact-box">
                     <h4>RESULTADO CONCRETO:</h4>
                     <p>Propriedade em Rodeio reduziu de 8.000 para 3.500 litros/dia por hectare após implantação do sistema, mantendo produtividade.</p>
                 </div>
-                
                 <h3>Gestão Pública Eficiente</h3>
                 <h4>Secretaria Municipal de Agricultura de Itajaí:</h4>
                 <p>Reduziu em 28 vezes o custo de água no Parque do Agricultor Gilmar Graf mediante modernização da infraestrutura hídrica.</p>
                 <p>Projetos de captação de água da chuva e cisternas em propriedades rurais.</p>
-                
                 <h3>Projetos Estaduais (Epagri)</h3>
                 <h4>Plataforma de Vulnerabilidade Hídrica:</h4>
                 <p>Mapeamento em tempo real da relação oferta/demanda de água por município e bacia hidrográfica do Oeste Catarinense (previsão de conclusão: 2025).</p>
-                
                 <h4>Resultados recentes (2023-2024):</h4>
                 <ul>
                     <li>755,5 mil m³ de água armazenados em cisternas.</li>
@@ -437,7 +421,6 @@
                     <li>67,8 hectares de matas ciliares recuperados.</li>
                 </ul>
             </section>
-            
             <section>
                 <h2>Desafios Estruturais na Região</h2>
                 <table>
@@ -463,31 +446,25 @@
                     </tr>
                 </table>
             </section>
-            
             <section>
                 <h2>Soluções Aplicáveis à Região</h2>
-                
                 <h3>Expansão de Tecnologias Locais</h3>
                 <p>Adoção em massa dos sistemas da Metos Brasil:</p>
                 <ul>
                     <li>Integração de sensores de solo com previsão climática para otimizar irrigação.</li>
                     <li>Economia de energia e água em propriedades de pequeno e médio porte.</li>
                 </ul>
-                
                 <h3>Fortalecimento de Políticas Públicas</h3>
                 <h4>Programa Estadual de ILPF (Integração Lavoura-Pecuária-Floresta):</h4>
                 <p>Recuperação de 21 mil hectares com terraceamento e plantio direto em SC.</p>
                 <p>Meta: Ampliar para 50 mil hectares até 2027, focando no Vale do Itajaí.</p>
-                
                 <h4>Subsídios para irrigação sustentável:</h4>
                 <p>Linhas de crédito para aquisição de sistemas de microaspersão/gotejamento.</p>
-                
                 <h3>Combate ao Desmatamento Ilegal</h3>
                 <h4>Rastreamento bovino rigoroso:</h4>
                 <p>Implementação do Sisbov+ com integração de dados do CAR e GTAs para bloquear gado de áreas desmatadas.</p>
                 <p>Pressão de mercados internacionais (ex.: Regulamento Europeu contra Desmatamento).</p>
             </section>
-            
             <section>
                 <h2>Caso de Sucesso: Proteção de Nascentes no Vale</h2>
                 <p>Projeto da Epagri (2023-2024):</p>
@@ -495,25 +472,19 @@
                     <li>409 nascentes protegidas com técnicas como fontes modelo Caxambu.</li>
                     <li>Recuperação de 67,8 ha de matas ciliares, aumentando a vazão de rios em 15% em microbacias críticas.</li>
                 </ul>
-                
                 <div class="highlight">
                     <p><strong>Impacto econômico:</strong> Cada nascente protegida gera economia de R$ 15.000/ano em tratamento de água para municípios da região.</p>
                 </div>
             </section>
-            
             <section>
                 <h2>Recomendações para Itajaí</h2>
                 <h3>Criação de um Centro de Inovação em Agricultura de Precisão:</h3>
                 <p>Parceria entre Metos Brasil, Epagri e prefeitura para capacitar produtores.</p>
-                
                 <h3>Universalização do Reúso de Água:</h3>
                 <p>Aproveitamento de efluentes tratados (ex.: vinhaça) em cultivos como cana-de-açúcar.</p>
-                
                 <h3>Fiscalização Integrada:</h3>
                 <p>União de SEMAE, Polícia Ambiental e Epagri para coibir desmatamento e "lavagem de gado".</p>
-                
                 <p><strong>Impacto potencial:</strong> Redução de 40% no consumo hídrico do agronegócio regional até 2030, com economia de R$ 8,2 milhões/ano.</p>
-                
                 <div class="fact-box">
                     <h4>OPORTUNIDADE ÚNICA:</h4>
                     <p>Itajaí pode se tornar referência nacional em agronegócio sustentável, atraindo investimentos de R$ 150 milhões até 2026 em tecnologias hídricas.</p>
@@ -521,30 +492,24 @@
             </section>
         </div>
     </div>
-    
     <footer>
         <div class="container">
+            <p>Feira de Ciencias EEB RAUL BAYER LAUS por: Brenda Maria Lemos de Moraes, Fernanda da Silva Lima, Sarah Yasmin de Borba Souza e Victor Luiz Korb Rhenius</p>
             <p>© 2024 Projeto Escolar sobre Conscientização do Uso da Água no Agronegócio</p>
             <p>Todos os direitos reservados</p>
         </div>
     </footer>
-    
     <script>
         // Função para alternar entre abas
         function openTab(evt, tabName) {
-            // Esconde todos os conteúdos de abas
             var tabContents = document.getElementsByClassName("tab-content");
             for (var i = 0; i < tabContents.length; i++) {
                 tabContents[i].classList.remove("active");
             }
-            
-            // Remove a classe 'active' de todos os botões
             var tabButtons = document.getElementsByClassName("tab-button");
             for (var i = 0; i < tabButtons.length; i++) {
                 tabButtons[i].classList.remove("active");
             }
-            
-            // Mostra a aba atual e adiciona 'active' ao botão
             document.getElementById(tabName).classList.add("active");
             evt.currentTarget.classList.add("active");
         }
