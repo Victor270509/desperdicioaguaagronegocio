@@ -23,16 +23,42 @@
         
         /* Cabeçalho */
         header {
-            background-color: #1e88e5;
+            background: linear-gradient(135deg, #1e88e5 0%, #2e7d32 100%);
             color: white;
             padding: 2rem 0;
             text-align: center;
             margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        header .container {
+            position: relative;
+            z-index: 1;
         }
         
         header h1 {
             margin: 0;
             font-size: 2.5rem;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
         }
         
         /* Navegação por Abas */
@@ -150,6 +176,27 @@
                 margin: 5px 0;
                 border-radius: 5px;
             }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Destaques */
+        .highlight {
+            background-color: #e3f2fd;
+            padding: 15px;
+            border-left: 4px solid #1e88e5;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .fact-box {
+            background-color: #e8f5e9;
+            border: 1px solid #81c784;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
         }
     </style>
 </head>
@@ -175,10 +222,19 @@
                 <h2>Panorama do Consumo de Água no Agronegócio Brasileiro</h2>
                 <p>O agronegócio responde por 70% do consumo total de água no Brasil, sendo a agricultura responsável por 50,5% e a pecuária por 19,5%.</p>
                 
+                <div class="fact-box">
+                    <h4>DADO ALARMANTE:</h4>
+                    <p>Enquanto o Brasil detém 12% da água doce superficial do planeta, a má gestão hídrica no agronegócio coloca em risco a segurança alimentar e econômica do país.</p>
+                </div>
+                
                 <img src="https://www.redeagro.agr.br/2020/wp-content/uploads/2020/08/infografico.png" alt="Infográfico sobre consumo de água" class="content-image">
                 
                 <h3>Intensidade hídrica</h3>
                 <p>Em 2020, a agricultura consumiu 683,8 litros de água para gerar R$1 de Valor Adicionado Bruto (VAB). Quando descontada a água da chuva, o volume cai para 78,4 litros/R$1.</p>
+                
+                <div class="highlight">
+                    <p><strong>Comparativo internacional:</strong> A pegada hídrica da soja brasileira é 55% maior que a dos EUA devido a métodos de irrigação menos eficientes.</p>
+                </div>
                 
                 <h3>Projeção</h3>
                 <p>A demanda de água no setor deve aumentar 24% na próxima década devido à expansão das áreas irrigadas.</p>
@@ -189,8 +245,6 @@
                 
                 <h3>Sistemas de Irrigação Ineficientes</h3>
                 <p>Perdas médias: Entre 50% e 60% da água usada na irrigação é desperdiçada por falhas técnicas, como vazamentos, horários inadequados de aplicação e equipamentos obsoletos.</p>
-                
-                <img src="https://s2.glbimg.com/Zyrv8CzihWdsH5aAyKc_F8yTrIc=/e.glbimg.com/og/ed/f/original/2019/04/03/graficoagua.png" alt="Gráfico sobre uso da água" class="content-image">
                 
                 <h4>Causas:</h4>
                 <ul>
@@ -208,37 +262,59 @@
                     <li>Contaminação: Agrotóxicos e resíduos animais poluem rios e aquíferos, inviabilizando fontes de água potável.</li>
                     <li>Consumo direto: A criação de gado consome 1.000 m³ de água por segundo, principalmente para dessedentação e limpeza de instalações.</li>
                 </ul>
+                
+                <div class="fact-box">
+                    <h4>NOVO ESTUDO (2024):</h4>
+                    <p>A pecuária na região do Matopiba (fronteira agrícola) já reduziu em 18% a recarga dos aquíferos Urucuia e Guarani, que abastecem 6 estados.</p>
+                </div>
             </section>
             
             <section>
-                <h2>Dados Atualizados sobre Gastos de Água (2020-2024)</h2>
+                <h2>Dados Atualizados sobre Gastos de Água</h2>
                 <table>
                     <tr>
                         <th>Indicador</th>
                         <th>Valor</th>
-                        <th>Fonte</th>
                     </tr>
                     <tr>
                         <td>Perda na distribuição (2024)</td>
                         <td>37,78% da água tratada</td>
-                        <td>10</td>
                     </tr>
                     <tr>
                         <td>Água para gerar R$1 (2020)</td>
                         <td>6,2 litros (média nacional)</td>
-                        <td>5</td>
                     </tr>
                     <tr>
                         <td>Área irrigada (2023)</td>
                         <td>8,5 milhões de hectares</td>
-                        <td>4</td>
                     </tr>
                     <tr>
                         <td>Potencial de expansão irrigada</td>
                         <td>Até 34 milhões de hectares</td>
-                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>Consumo diário por cabeça de gado</td>
+                        <td>50 litros (média nacional)</td>
+                    </tr>
+                    <tr>
+                        <td>Água virtual exportada (2023)</td>
+                        <td>112 trilhões de litros (via commodities)</td>
                     </tr>
                 </table>
+                
+                <div class="highlight">
+                    <p><strong>Água Virtual:</strong> O Brasil exportou em 2023 o equivalente a 5 anos de consumo doméstico de água através de commodities agrícolas, sem contabilizar o custo hídrico real.</p>
+                </div>
+            </section>
+            
+            <section>
+                <h2>Impacto Econômico do Desperdício</h2>
+                <p>Segundo estudo da Confederação da Agricultura e Pecuária do Brasil (CNA, 2023):</p>
+                <ul>
+                    <li>Perdas anuais de R$ 12,7 bilhões com irrigação ineficiente</li>
+                    <li>Custo adicional de R$ 3,4 bilhões/ano com tratamento de água contaminada por agrotóxicos</li>
+                    <li>Redução de 8,5% na produtividade agrícola em regiões com estresse hídrico</li>
+                </ul>
             </section>
         </div>
         
@@ -252,10 +328,22 @@
                 <p>Sistemas de gotejamento ou microaspersão reduzem perdas por evaporação em até 60%.</p>
                 <p>Uso de sensores de umidade do solo e previsão climática (ex.: plataforma BoosterPRO) pode economizar 40% em energia e aumentar produtividade em 20%.</p>
                 
+                <div class="fact-box">
+                    <h4>CASO REAL:</h4>
+                    <p>Fazenda em Goiás reduziu consumo hídrico em 55% com IoT, economizando R$ 1,2 milhão/ano e aumentando produção em 18%.</p>
+                </div>
+                
                 <h4>Reúso de água:</h4>
                 <p>Aproveitamento de efluentes tratados (ex.: vinhaça da cana) já irriga 25% das áreas de canaviais.</p>
                 
                 <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgAj2gTrId-Juy7EuBV_7fgNcBXWXD8fAEru1Qd9m4ua3GSekQdo5DZ5CqmB2BDHzNkAPc4wJHosoUiCKbS3aLv0Jkpy9nPRNw66Tq9h8xgX_JHxToNy-SCvx8YHBUG08s7bAd4wMRayr0/s1600/IMG-20180220-WA0014.jpg" alt="Sistema de irrigação" class="content-image">
+                
+                <h4>Agricultura 4.0:</h4>
+                <ul>
+                    <li>Drones com sensores térmicos identificam vazamentos invisíveis</li>
+                    <li>Inteligência Artificial prevê demanda hídrica com 92% de precisão</li>
+                    <li>Blockchain para rastrear pegada hídrica de produtos</li>
+                </ul>
             </section>
             
             <section>
@@ -264,8 +352,15 @@
                 <p>Sistemas integrados sequestram 2,58 ton de carbono/hectare/ano, melhorando a retenção hídrica do solo.</p>
                 <p>Apenas 15 milhões de hectares usam esse modelo (9% das pastagens).</p>
                 
+                <div class="highlight">
+                    <p><strong>Benefícios comprovados:</strong> Propriedades com ILPF no MT aumentaram retenção hídrica em 30% e reduziram necessidade de irrigação em 45%.</p>
+                </div>
+                
                 <h4>Rastreabilidade bovina:</h4>
                 <p>Combate à "lavagem de gado" criado em áreas desmatadas ilegalmente.</p>
+                
+                <h4>Sistemas Voisin:</h4>
+                <p>Pastoreio racional que aumenta capacidade de suporte em 300% e reduz consumo hídrico por kg de carne.</p>
             </section>
             
             <section>
@@ -275,6 +370,9 @@
                 
                 <h4>Fiscalização:</h4>
                 <p>Controle rigoroso de agrotóxicos e desmatamento em áreas protegidas.</p>
+                
+                <h4>Incentivos fiscais:</h4>
+                <p>Novo programa Água+Produtiva (2024) oferece 30% de desconto em equipamentos de irrigação eficiente.</p>
             </section>
             
             <section>
@@ -283,7 +381,14 @@
                 <ul>
                     <li>Segurança alimentar: Quadruplicar a produção sem expandir áreas.</li>
                     <li>Resiliência climática: Proteção de aquíferos e florestas como o Sistema Aquífero Amazônia (124 quatrilhões de litros).</li>
+                    <li>Vantagem competitiva: Certificações hídricas podem agregar 15-20% no valor de exportação.</li>
                 </ul>
+                
+                <div class="fact-box">
+                    <h4>VISÃO 2030:</h4>
+                    <p>Se todas as soluções fossem implementadas, o Brasil poderia economizar 42 trilhões de litros/ano - suficiente para abastecer 300 milhões de pessoas.</p>
+                </div>
+                
                 <p>A transição depende de tecnologia acessível, regulação efetiva e consciência setorial sobre a crise hídrica.</p>
             </section>
         </div>
@@ -294,6 +399,10 @@
                 <h2>Contexto Hídrico Regional</h2>
                 <p>O Vale do Itajaí enfrenta secas recorrentes devido ao fenômeno La Niña, com prejuízos de R$17 bilhões na agropecuária catarinense entre 2000-2022 (97,7% das perdas por seca no estado).</p>
                 <p>A região Oeste de SC (incluindo o Vale) concentra a maior demanda hídrica do estado para agropecuária, pressionando bacias hidrográficas locais.</p>
+                
+                <div class="highlight">
+                    <p><strong>Dado local:</strong> O rio Itajaí-Açu já apresenta redução de 22% na vazão média nos últimos 20 anos, com picos de 40% em períodos de estiagem.</p>
+                </div>
             </section>
             
             <section>
@@ -306,6 +415,11 @@
                     <li>Plataforma Irrimet para cálculo do balanço hídrico em tempo real.</li>
                 </ul>
                 <p>Redução de 30-50% no consumo de água ao evitar irrigação excessiva e sincronizar com previsões de chuva.</p>
+                
+                <div class="fact-box">
+                    <h4>RESULTADO CONCRETO:</h4>
+                    <p>Propriedade em Rodeio reduziu de 8.000 para 3.500 litros/dia por hectare após implantação do sistema, mantendo produtividade.</p>
+                </div>
                 
                 <h3>Gestão Pública Eficiente</h3>
                 <h4>Secretaria Municipal de Agricultura de Itajaí:</h4>
@@ -343,6 +457,10 @@
                         <td>Falta de rastreabilidade</td>
                         <td>Risco de "lavagem de gado" oriundo de áreas desmatadas ilegalmente</td>
                     </tr>
+                    <tr>
+                        <td>Falta de assistência técnica</td>
+                        <td>70% dos pequenos produtores não têm acesso a consultoria em gestão hídrica</td>
+                    </tr>
                 </table>
             </section>
             
@@ -377,6 +495,10 @@
                     <li>409 nascentes protegidas com técnicas como fontes modelo Caxambu.</li>
                     <li>Recuperação de 67,8 ha de matas ciliares, aumentando a vazão de rios em 15% em microbacias críticas.</li>
                 </ul>
+                
+                <div class="highlight">
+                    <p><strong>Impacto econômico:</strong> Cada nascente protegida gera economia de R$ 15.000/ano em tratamento de água para municípios da região.</p>
+                </div>
             </section>
             
             <section>
@@ -391,6 +513,11 @@
                 <p>União de SEMAE, Polícia Ambiental e Epagri para coibir desmatamento e "lavagem de gado".</p>
                 
                 <p><strong>Impacto potencial:</strong> Redução de 40% no consumo hídrico do agronegócio regional até 2030, com economia de R$ 8,2 milhões/ano.</p>
+                
+                <div class="fact-box">
+                    <h4>OPORTUNIDADE ÚNICA:</h4>
+                    <p>Itajaí pode se tornar referência nacional em agronegócio sustentável, atraindo investimentos de R$ 150 milhões até 2026 em tecnologias hídricas.</p>
+                </div>
             </section>
         </div>
     </div>
